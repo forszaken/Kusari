@@ -1,0 +1,7 @@
+.env
+/.idea
+/.data
+docker/backend/nginx/logs/access.log
+docker/backend/nginx/logs/error.log
+/vendor
+/node_modules
