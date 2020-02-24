@@ -15,7 +15,6 @@ class App
 {
     private $request;
 
-
     private $router;
     private $routes;
     private $requestContext;
@@ -27,6 +26,10 @@ class App
 
     private static $instance = null;
 
+    /**
+     * App constructor.
+     * @param $corePath
+     */
     private function __construct($corePath)
     {
         $this->corePath = $corePath;
@@ -35,7 +38,6 @@ class App
         $this->setRouter();
         $this->routes = $this->router->getRouteCollection();
     }
-
 
     private function setRequest()
     {
@@ -48,11 +50,17 @@ class App
         $this->requestContext->fromRequest($this->request);
     }
 
+    /**
+     * @return mixed
+     */
     public function getRequest()
     {
         return $this->request;
     }
 
+    /**
+     * @return mixed
+     */
     public function getRequestContext()
     {
         return $this->requestContext;
@@ -68,6 +76,10 @@ class App
         );
     }
 
+    /**
+     * @param $corePath
+     * @return null
+     */
     public static function getInstance($corePath)
     {
         if (is_null(static::$instance)) {
@@ -77,16 +89,26 @@ class App
         return static::$instance;
     }
 
+    /**
+     * @return array|bool|callable|false|mixed
+     */
     public function getController()
     {
         return (new ControllerResolver())->getController($this->request);
     }
 
+    /**
+     * @param $controller
+     * @return array
+     */
     public function getArguments($controller)
     {
         return (new ArgumentResolver())->getArguments($this->request, $controller);
     }
 
+    /**
+     * @return mixed
+     */
     public function run()
     {
         $matcher = new UrlMatcher($this->routes, $this->requestContext);
