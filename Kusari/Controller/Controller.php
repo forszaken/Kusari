@@ -3,7 +3,6 @@
 
 namespace Kusari\Controller;
 
-
 use Kusari\View\View;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -20,5 +19,4 @@ abstract class Controller implements IController
     {
         return new Response($this->view->make($path, $data));
     }
-
 }

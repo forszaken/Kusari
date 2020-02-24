@@ -2,6 +2,7 @@
 
 namespace Kusari\View;
 
-interface IView {
+interface IView
+{
     public function make($path, $data = []);
 }

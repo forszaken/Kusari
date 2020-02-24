@@ -14,5 +14,5 @@ $dotenv->load(dirname(__DIR__). '/.env');
 
 
 ### Run
-$app = require_once (__DIR__ . '/../bootstrap/app.php');
+$app = require_once(__DIR__ . '/../bootstrap/app.php');
 $app->run();
